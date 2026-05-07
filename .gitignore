@@ -1,3 +1,7 @@
+# Exported data (may contain client information)
+exports/
+exports_bc3/
+
 # State files (contain session cookies - security risk)
 state.json
 state_bc3.json
