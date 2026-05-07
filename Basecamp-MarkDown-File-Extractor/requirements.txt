@@ -1,0 +1,4 @@
+playwright
+markdownify
+beautifulsoup4
+PyYAML

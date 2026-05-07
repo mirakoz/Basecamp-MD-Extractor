@@ -1,0 +1,63 @@
+---
+title: 'Alpha Website Design | PPC: (Urgent)'
+url: https://basecamp.com/2325709/projects/19872116/messages/111761590
+author: Unknown
+date: Unknown
+type: basecamp-export
+---
+
+# Alpha Website Design | PPC: (Urgent)
+
+# [Alpha Website Design | PPC](/2325709/projects/19872116)
+
+Alpha Website Design | PPC: (Urgent) - Website Down
+
+# just moved this page.
+
+See it in its new location →
+
+# just copied this page.
+
+[Go back to the original](#)
+or See it in its new location →
+
+The client can’t see anything on this page
+
+#### Are you sure you want to show this message and its comments to the client?
+
+They’ll be able to see any comments that have been made so far and add their own.
+
+# Message
+
+Project: [Alpha Website Design | PPC](/2325709/projects/19872116)
+
+### (Urgent) - Website Down
+
+Posted by Yeliz Kolasinli on Dec 17, 2025
+
+[![Yeliz Kolasinli](https://asset1.basecamp.com/2325709/people/18747394/photo/avatar.96.gif "Yeliz Kolasinli")](/2325709/people/18747394)
+
+Hi Kevin,  
+  
+The website is not working. Can you please check that?  
+  
+Best,  
+Yeliz
+
+#### Discuss this message
+
+![](https://asset1.basecamp.com/people/19154717/photo/avatar.96.gif "Mirak Ozoglu")
+
+Add a comment or upload a file…
+
+[By-the-minute history for this message...](#)
+
+---
+
+## Comments
+
+#### Discuss this message
+
+![](https://asset1.basecamp.com/people/19154717/photo/avatar.96.gif "Mirak Ozoglu")
+
+Add a comment or upload a file…
