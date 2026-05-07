@@ -1,0 +1,21 @@
+# State files (contain session cookies - security risk)
+state.json
+state_bc3.json
+state_bc2.json
+
+# Sync manifests (contain URL history - optional but recommended)
+sync_manifest_bc2.json
+sync_manifest_bc3.json
+
+# Editor and system files
+.DS_Store
+*.swp
+*.swo
+*~
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.Python
+venv/
