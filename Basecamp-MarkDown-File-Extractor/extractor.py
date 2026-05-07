@@ -11,7 +11,7 @@ import markdownify
 STATE_FILE = "state.json"
 BASECAMP_URL = "https://basecamp.com/2325709/"
 USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-EXPORTS_DIR = Path("exports")
+EXPORTS_DIR = Path.home() / "Downloads" / "Basecamp-Exports"
 MANIFEST_FILE = "sync_manifest_bc2.json"
 
 def load_manifest():
