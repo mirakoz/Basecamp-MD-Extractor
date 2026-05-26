@@ -33,7 +33,11 @@ def mark_synced(manifest, url):
 
 def sanitize_filename(name):
     # Remove invalid characters for filenames
-    return re.sub(r'[\\/*?:"<>|]', "", name).strip()
+    name = re.sub(r'[\\/*?:"<>|]', "", name).strip()
+    # Prevent path traversal by removing leading dots and collapsing multiple dots
+    name = re.sub(r"^\.+", "", name)
+    name = re.sub(r"\.+", ".", name)
+    return name or "unnamed"
 
 def clean_html_bc3(html_content):
     soup = BeautifulSoup(html_content, 'html.parser')
@@ -297,7 +301,9 @@ def main():
     manifest = load_manifest()
     print(f"Manifest loaded: {len(manifest)} URLs already synced.")
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False, args=["--no-sandbox", "--disable-dev-shm-usage"])
+        browser = p.chromium.launch(
+            headless=True, args=["--no-sandbox", "--disable-dev-shm-usage"]
+        )
         context = browser.new_context(storage_state=STATE_FILE, user_agent=USER_AGENT)
         page = context.new_page()
         
