@@ -1,0 +1,4 @@
+## 2025-01-24 - Path Traversal in Filename Sanitization
+**Vulnerability:** The `sanitize_filename` function only removed specific characters `[\\/*?:"<>|]` but did not handle sequences of dots (like `..`) or leading dots, which could lead to path traversal or hidden files when combined with directory creation logic.
+**Learning:** Simply removing path separators is insufficient for secure filename sanitization. Malicious inputs like `..` can still be used to navigate directories if the resulting path is not properly validated or if the input is transformed into another dangerous sequence (e.g., `../..` becoming `....`).
+**Prevention:** In addition to removing illegal characters, strip leading dots and collapse multiple consecutive dots into a single dot to ensure the filename stays within the intended directory.
