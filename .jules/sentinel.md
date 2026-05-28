@@ -1,0 +1,4 @@
+## 2025-05-14 - Path Traversal in Filename Sanitization
+**Vulnerability:** Insufficient sanitization of project and discussion titles allowed for potential path traversal during file export. While slashes were already removed, relative path markers like `..` were not handled, allowing files to be written to the parent directory.
+**Learning:** Removing invalid filename characters like `[\\/*?:"<>|]` is insufficient if relative path segments like `..` remain. `Path.joinpath` and `os.path.join` resolve these segments, which can lead to directory traversal.
+**Prevention:** Explicitly strip leading dots and collapse multiple dots in filenames derived from user-controlled input to prevent relative path navigation. Always provide a safe fallback for filenames that become empty or invalid after sanitization.
