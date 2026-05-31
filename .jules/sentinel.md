@@ -1,0 +1,4 @@
+## 2025-05-15 - Path Traversal in Filename Sanitization
+**Vulnerability:** The `sanitize_filename` function only removed a subset of invalid characters (`[\\/*?:"<>|]`) but allowed dots (`.`). This permitted path traversal attacks (e.g., `../../etc/passwd`) where the resulting path could point outside the intended export directory.
+**Learning:** Blacklisting specific characters for filenames is often insufficient if directory traversal sequences like `..` are preserved. Relying on `Path / filename` doesn't automatically prevent traversal if the filename itself contains traversal components.
+**Prevention:** Sanitize filenames by removing all directory separators AND all sequences of dots that could be used for traversal. Always provide a safe fallback name if sanitization results in an empty string.
