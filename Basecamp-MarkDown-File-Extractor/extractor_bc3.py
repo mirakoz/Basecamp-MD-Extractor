@@ -32,8 +32,11 @@ def mark_synced(manifest, url):
     save_manifest(manifest)
 
 def sanitize_filename(name):
-    # Remove invalid characters for filenames
-    return re.sub(r'[\\/*?:"<>|]', "", name).strip()
+    # Remove invalid characters and dots to prevent path traversal
+    # We remove all dots as Basecamp titles don't require them for functionality
+    sanitized = re.sub(r'[\\/*?:"<>|.]', "", name).strip()
+    # If the resulting name is empty, provide a fallback to avoid errors
+    return sanitized if sanitized else "unnamed"
 
 def clean_html_bc3(html_content):
     soup = BeautifulSoup(html_content, 'html.parser')
