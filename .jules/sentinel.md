@@ -1,0 +1,4 @@
+## 2025-06-06 - Path Traversal in Filename Sanitization
+**Vulnerability:** The `sanitize_filename` function only removed specific characters `[\\/*?:"<>|]` but allowed dots (`.`). This permitted path traversal attacks (e.g., `../../evil`) and the creation of hidden files (e.g., `.hidden`).
+**Learning:** Common blacklists for filenames often miss dots, which are critical for path traversal in many OS environments. In this application, project and message titles from Basecamp were used directly in file paths, making it vulnerable if a project or message was maliciously named.
+**Prevention:** Always sanitize filenames by removing or replacing all potential path separators, including dots if they are not strictly necessary for extensions. Providing a safe fallback (like 'unnamed') ensures that even if all characters are removed, the application doesn't crash or create invalid files.
