@@ -3,7 +3,8 @@
 # Basecamp Sync Script
 # Runs both BC2 and BC3 extractors, only fetching new/missing data
 
-SCRIPT_DIR="/Users/mirakozoglu/Documents/Antigravity/Basecamp-MarkDown-File-Extractor"
+# Get the directory where the script is located
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 LOG_FILE="$SCRIPT_DIR/sync.log"
 VENV="$SCRIPT_DIR/.venv/bin/activate"
 
