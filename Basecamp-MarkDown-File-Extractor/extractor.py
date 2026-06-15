@@ -32,8 +32,11 @@ def mark_synced(manifest, url):
     save_manifest(manifest)
 
 def sanitize_filename(name):
-    # Remove invalid characters for filenames
-    return re.sub(r'[\\/*?:"<>|]', "", name).strip()
+    # Remove invalid characters for filenames and prevent path traversal
+    name = re.sub(r'[\\/*?:"<>|]', "", name).strip()
+    # Strip leading/trailing dots and spaces to prevent hidden files/traversal
+    name = name.strip(". ")
+    return name if name else "unnamed"
 
 def clean_html(html_content):
     soup = BeautifulSoup(html_content, 'html.parser')
