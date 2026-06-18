@@ -42,10 +42,12 @@ def clean_html_bc3(html_content):
     soup = BeautifulSoup(html_content, 'html.parser')
     
     # Remove Basecamp 3 UI buttons, avatars, forms, and admin controls
+    # Also remove sensitive tags to prevent data leakage (CSRF tokens) and XSS
     selectors_to_remove = [
         '.action-sheet', '.button', '.btn', '.avatar', 'form', 
         '.nav', '.menu', '.tooltip', '.header__menu', 
-        '.record-tools', '.push-button', '.chat__tools'
+        '.record-tools', '.push-button', '.chat__tools',
+        'script', 'style', 'meta', 'link'
     ]
     for selector in selectors_to_remove:
         for element in soup.select(selector):
