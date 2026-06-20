@@ -39,7 +39,14 @@ def sanitize_filename(name):
     return name if name else "unnamed"
 
 def clean_html(html_content):
+    """
+    Cleans HTML content by removing interactive elements and potential XSS vectors.
+    """
     soup = BeautifulSoup(html_content, 'html.parser')
+
+    # Remove script, style, link, and meta tags to prevent XSS and style injection
+    for tag in soup(['script', 'style', 'link', 'meta']):
+        tag.decompose()
     
     # Remove Basecamp UI buttons, forms, and admin controls
     selectors_to_remove = [
