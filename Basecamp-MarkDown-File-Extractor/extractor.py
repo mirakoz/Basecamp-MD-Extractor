@@ -42,8 +42,10 @@ def clean_html(html_content):
     soup = BeautifulSoup(html_content, 'html.parser')
     
     # Remove Basecamp UI buttons, forms, and admin controls
+    # Also explicitly remove scripts and metadata to prevent XSS and leakage
     selectors_to_remove = [
-        '.action_button', '.button', '.admin', '.controls', 'form', 
+        'script', 'style', 'meta', 'link', 'form',
+        '.action_button', '.button', '.admin', '.controls',
         '.button_to', '.edit', '.delete', '.trash', 'header menu'
     ]
     for selector in selectors_to_remove:
