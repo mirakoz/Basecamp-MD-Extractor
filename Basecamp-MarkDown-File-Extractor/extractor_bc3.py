@@ -40,17 +40,23 @@ def sanitize_filename(name):
 
 def clean_html_bc3(html_content):
     soup = BeautifulSoup(html_content, 'html.parser')
-    
-    # Remove Basecamp 3 UI buttons, avatars, forms, and admin controls
+
+    # Explicitly remove sensitive or active tags to prevent XSS and metadata leakage
+    tags_to_remove = ['script', 'style', 'meta', 'link', 'form']
+    for tag in tags_to_remove:
+        for element in soup.find_all(tag):
+            element.decompose()
+
+    # Remove Basecamp 3 UI buttons, avatars, and admin controls
     selectors_to_remove = [
-        '.action-sheet', '.button', '.btn', '.avatar', 'form', 
-        '.nav', '.menu', '.tooltip', '.header__menu', 
+        '.action-sheet', '.button', '.btn', '.avatar', '.admin',
+        '.nav', '.menu', '.tooltip', '.header__menu',
         '.record-tools', '.push-button', '.chat__tools'
     ]
     for selector in selectors_to_remove:
         for element in soup.select(selector):
             element.decompose()
-            
+
     return str(soup)
 
 def generate_markdown(title, content_html, url, author="Unknown", date="Unknown"):
