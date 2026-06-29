@@ -40,16 +40,18 @@ def sanitize_filename(name):
 
 def clean_html(html_content):
     soup = BeautifulSoup(html_content, 'html.parser')
-    
-    # Remove Basecamp UI buttons, forms, and admin controls
+
+    # Remove Basecamp UI elements and sensitive/unwanted tags
+    # Explicitly removing script, style, meta, link, and form tags for security
     selectors_to_remove = [
-        '.action_button', '.button', '.admin', '.controls', 'form', 
-        '.button_to', '.edit', '.delete', '.trash', 'header menu'
+        ".action_button", ".button", ".admin", ".controls", "form",
+        ".button_to", ".edit", ".delete", ".trash", "header menu",
+        "script", "style", "meta", "link",
     ]
     for selector in selectors_to_remove:
         for element in soup.select(selector):
             element.decompose()
-            
+
     return str(soup)
 
 def generate_markdown(title, content_html, url, author="Unknown", date="Unknown"):
